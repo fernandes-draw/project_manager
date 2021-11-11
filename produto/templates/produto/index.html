@@ -1,5 +1,7 @@
 {% extends "produto/layouts/base.html" %}
 
+{% load static %}
+
 {% block title %}Lista de Produtos{% endblock %}
 
 {% block page %}Lista de Produtos {% endblock %}
@@ -9,6 +11,7 @@
     <thead>
         <tr>
             <th scope="col">Id:</th>
+            <th scope="col">Imagem:</th>
             <th scope="col">Nome:</th>
             <th scope="col">Código_1:</th>
             <th scope="col">Código_2:</th>
@@ -21,6 +24,7 @@
         {% for produto in produtos %}
         <tr>
             <th scope="row">{{ produto.pk }}</th>
+            <th><img src="{{ produto.image.url }}" class="thumbs" alt=""></th>
             <th scope="row">{{ produto.nome }}</th>
             <th scope="row" class="text-center">{{ produto.codigo_01 }}</th>
             <th scope="row" class="text-center">{{ produto.codigo_02 }}</th>

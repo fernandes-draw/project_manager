@@ -22,9 +22,9 @@
         <tr>
             <th scope="row">{{ produto.pk }}</th>
             <th scope="row">{{ produto.nome }}</th>
-            <th scope="row">{{ codigo }}</th>
-            <th scope="row">{{ codigo }}</th>
-            <th scope="row">{{ codigo }}</th>
+            <th scope="row" class="text-center">{{ produto.codigo_01 }}</th>
+            <th scope="row" class="text-center">{{ produto.codigo_02 }}</th>
+            <th scope="row" class="text-center">{{ produto.codigo_03 }}</th>
             <th scope="row">{{ produto.data_cadastro | date:'d/m/y' }}</th>
             <th scope="row">
                 <a class="btn btn-warning btn-sm" href="">!</a>

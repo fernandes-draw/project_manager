@@ -1,17 +1,15 @@
 from django.db import models
 
 # Create your models here.
+
+
 class Produto(models.Model):
     nome = models.CharField(max_length=150)
+    image = models.ImageField()
     data_cadastro = models.DateField(auto_now=True)
+    codigo_01 = models.CharField(max_length=10)
+    codigo_02 = models.CharField(max_length=10, null=True, default="-")
+    codigo_03 = models.CharField(max_length=10, null=True, default="-")
 
     def __str__(self):
-        return self.nome + " - " + str(self.data_cadastro)
-
-class Codigo(models.Model):
-    produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
-    codigo = models.CharField(max_length=10)
-
-    def __str__(self):
-        return self.codigo + " - " + str(Produto.objects.get())
-    
+        return self.nome + " - " + self.codigo_01 + " - " + self.codigo_02 + " - " + self.codigo_03

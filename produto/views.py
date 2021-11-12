@@ -8,6 +8,6 @@ def index(request):
     return render(request, 'produto/index.html', {'produtos': produtos})
 
 
-def detalhe(request, produto_id):
+def editar(request, produto_id):
     produto = get_object_or_404(Produto, pk=produto_id)
-    return render(request, 'produto/detalhe.html', {'produto': produto})
+    return render(request, 'produto/editar.html', {'produto': produto})

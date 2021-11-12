@@ -3,7 +3,7 @@
 
 {% block title %}Lista de Produtos{% endblock %}
 
-{% block page %}Lista de Produtos {% endblock %}
+{% block page %}Lista de Produtos <a href="" class="btn btn-success float-end">Novo Produto</a>{% endblock %}
 
 {% block content %}
 <div class="table-resposive">
@@ -11,12 +11,12 @@
         <thead>
             <tr>
                 <th scope="col">#:</th>
-                <th scope="col">Imagem:</th>
+                <th scope="col">Img:</th>
                 <th scope="col">Nome:</th>
-                <th scope="col">Código_1:</th>
-                <th scope="col">Código_2:</th>
-                <th scope="col">Código_3:</th>
-                <th scope="col">Data Cadastro:</th>
+                <th scope="col">Código 01:</th>
+                <th scope="col">Código 02:</th>
+                <th scope="col">Código 03:</th>
+                <th scope="col">Dt Cadastro:</th>
                 <th scope="col" class="text-center">Opções</th>
             </tr>
         </thead>
@@ -30,7 +30,7 @@
                 <th scope="row" class="text-center">{{ produto.codigo_01 }}</th>
                 <th scope="row" class="text-center">{{ produto.codigo_02 }}</th>
                 <th scope="row" class="text-center">{{ produto.codigo_03 }}</th>
-                <th scope="row">{{ produto.data_cadastro | date:'d/m/y' }}</th>
+                <th scope="row">{{ produto.data_cadastro | date:'d/m/Y' }}</th>
                 <th scope="row">
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-info btn-sm me-1 mt-1" data-bs-toggle="modal"
@@ -46,20 +46,27 @@
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" name="campo" id="campo">{{ produto.nome }}</h5>
+                            <h3 class="modal-title" name="campo" id="campo">{{ produto.nome }}</h3>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body align-middle pt-1">
                             <div class="row">
                                 <div class="col col-auto">
-                                    <span class="">Código(s):</span> <br>
-                                    <span class="badge rounded-pill bg-secondary">{{ produto.codigo_01 }}</span>
-                                    {% if produto.codigo_02 != "-" %}
-                                    <span class="badge rounded-pill bg-success">{{ produto.codigo_02 }}</span>
-                                    {% endif %}
-                                    {% if produto.codigo_03 != "-" %}
-                                    <span class="badge rounded-pill bg-primary">{{ produto.codigo_03 }}</span>
-                                    {% endif %}<hr>
+                                    <div class="col">
+                                        <h5>Data Cadastro:</h5>{{ produto.data_cadastro }}
+                                    </div>
+                                    <hr>
+                                    <div class="col">
+                                        <span class="">Código(s):</span> <br>
+                                        <span class="badge rounded-pill bg-secondary">{{ produto.codigo_01 }}</span>
+                                        {% if produto.codigo_02 != "-" %}
+                                        <span class="badge rounded-pill bg-success">{{ produto.codigo_02 }}</span>
+                                        {% endif %}
+                                        {% if produto.codigo_03 != "-" %}
+                                        <span class="badge rounded-pill bg-primary">{{ produto.codigo_03 }}</span>
+                                        {% endif %}
+                                        <hr>
+                                    </div>
                                 </div>
                                 <div class="col">
                                     <img class="rounded float-end" src="{{ produto.image.url }}" width="200px" alt="">
@@ -77,9 +84,3 @@
     </table>
 </div>
 {% endblock %}
-
-<script>
-    function dadosProduto(valor) {
-        document.getElementById('campo').innerText = "valor"
-    }
-</script>

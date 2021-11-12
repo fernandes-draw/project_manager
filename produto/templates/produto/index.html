@@ -7,7 +7,7 @@
 
 {% block content %}
 <div class="table-resposive">
-    <table class="table table-striped align-middle table-hover">
+    <table class="table table-striped align-middle table-hover table-sm">
         <thead>
             <tr>
                 <th scope="col">Id:</th>
@@ -17,7 +17,7 @@
                 <th scope="col">Código_2:</th>
                 <th scope="col">Código_3:</th>
                 <th scope="col">Data Cadastro:</th>
-                <th scope="col">Opções</th>
+                <th scope="col" class="text-center">Opções</th>
             </tr>
         </thead>
         <tbody>
@@ -32,10 +32,10 @@
                 <th scope="row" class="text-center">{{ produto.codigo_03 }}</th>
                 <th scope="row">{{ produto.data_cadastro | date:'d/m/y' }}</th>
                 <th scope="row">
-                    <a class="btn btn-success btn-sm" href="{% url 'produto:detalhe' produto.id %}"><i
+                    <a class="btn btn-success btn-sm me-1 mt-1" href="{% url 'produto:detalhe' produto.id %}"><i
                             class="fas fa-info-circle"></i></a>
-                    <a class="btn btn-warning btn-sm" href=""><i class="fas fa-edit"></i></a>
-                    <a class="btn btn-danger btn-sm" href=""><i class="fas fa-trash-alt"></i></a>
+                    <a class="btn btn-warning btn-sm me-1 mt-1" href=""><i class="fas fa-pen"></i></a>
+                    <a class="btn btn-danger btn-sm mt-1" href=""><i class="fas fa-trash-alt"></i></a>
                 </th>
             </tr>
             {% endfor %}

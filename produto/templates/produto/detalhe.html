@@ -1,0 +1,27 @@
+{% extends "produto/layouts/base.html" %}
+
+
+{% block title %}Detalhes do Produto{% endblock %}
+
+{% block page %}Detalhes do Produto{% endblock %}
+
+{% block content %}
+<div class="card" style="width: 18rem;">
+    <h4 class="card-title text-center pt-2 mb-0">{{ produto.nome }}</h4>
+    <hr>
+    <img src="{{  produto.image.url }}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{ produto.codigo_01 }}</li>
+        <li class="list-group-item">{{ produto.codigo_02 }}</li>
+        <li class="list-group-item">{{ produto.codigo_03 }}</li>
+    </ul>
+    <div class="card-body">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+    </div>
+</div>
+{% endblock %}

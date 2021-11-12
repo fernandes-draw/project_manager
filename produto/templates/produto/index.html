@@ -1,41 +1,45 @@
 {% extends "produto/layouts/base.html" %}
 
-{% load static %}
 
 {% block title %}Lista de Produtos{% endblock %}
 
 {% block page %}Lista de Produtos {% endblock %}
 
 {% block content %}
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">Id:</th>
-            <th scope="col">Imagem:</th>
-            <th scope="col">Nome:</th>
-            <th scope="col">Código_1:</th>
-            <th scope="col">Código_2:</th>
-            <th scope="col">Código_3:</th>
-            <th scope="col">Data Cadastro:</th>
-            <th scope="col">Opções</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for produto in produtos %}
-        <tr>
-            <th scope="row">{{ produto.pk }}</th>
-            <th><img src="{{ produto.image.url }}" class="thumbs" alt=""></th>
-            <th scope="row">{{ produto.nome }}</th>
-            <th scope="row" class="text-center">{{ produto.codigo_01 }}</th>
-            <th scope="row" class="text-center">{{ produto.codigo_02 }}</th>
-            <th scope="row" class="text-center">{{ produto.codigo_03 }}</th>
-            <th scope="row">{{ produto.data_cadastro | date:'d/m/y' }}</th>
-            <th scope="row">
-                <a class="btn btn-warning btn-sm" href="">!</a>
-                <a class="btn btn-danger btn-sm" href="">x</a>
-            </th>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="table-resposive">
+    <table class="table table-striped align-middle table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Id:</th>
+                <th scope="col">Imagem:</th>
+                <th scope="col">Nome:</th>
+                <th scope="col">Código_1:</th>
+                <th scope="col">Código_2:</th>
+                <th scope="col">Código_3:</th>
+                <th scope="col">Data Cadastro:</th>
+                <th scope="col">Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produto in produtos %}
+            <tr>
+                <th scope="row">{{ produto.pk }}</th>
+                <th><a href="{{ produto.image.url }}"><img src="{{ produto.image.url }}" width="40px" alt=""></a>
+                </th>
+                <th scope="row">{{ produto.nome }}</th>
+                <th scope="row" class="text-center">{{ produto.codigo_01 }}</th>
+                <th scope="row" class="text-center">{{ produto.codigo_02 }}</th>
+                <th scope="row" class="text-center">{{ produto.codigo_03 }}</th>
+                <th scope="row">{{ produto.data_cadastro | date:'d/m/y' }}</th>
+                <th scope="row">
+                    <a class="btn btn-success btn-sm" href="{% url 'produto:detalhe' produto.id %}"><i
+                            class="fas fa-info-circle"></i></a>
+                    <a class="btn btn-warning btn-sm" href=""><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-danger btn-sm" href=""><i class="fas fa-trash-alt"></i></a>
+                </th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

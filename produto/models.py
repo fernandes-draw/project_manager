@@ -5,7 +5,7 @@ from django.db import models
 
 class Produto(models.Model):
     nome = models.CharField(max_length=150)
-    image = models.ImageField()
+    image = models.ImageField(upload_to='produto/images/')
     data_cadastro = models.DateField(auto_now=True)
     codigo_01 = models.CharField(max_length=10)
     codigo_02 = models.CharField(max_length=10, null=True, default="-")

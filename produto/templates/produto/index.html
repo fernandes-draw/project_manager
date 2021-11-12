@@ -7,10 +7,10 @@
 
 {% block content %}
 <div class="table-resposive">
-    <table class="table table-striped align-middle table-hover table-sm">
+    <table class="table table-striped align-middle table-sm">
         <thead>
             <tr>
-                <th scope="col">Id:</th>
+                <th scope="col">#:</th>
                 <th scope="col">Imagem:</th>
                 <th scope="col">Nome:</th>
                 <th scope="col">Código_1:</th>
@@ -32,14 +32,54 @@
                 <th scope="row" class="text-center">{{ produto.codigo_03 }}</th>
                 <th scope="row">{{ produto.data_cadastro | date:'d/m/y' }}</th>
                 <th scope="row">
-                    <a class="btn btn-success btn-sm me-1 mt-1" href="{% url 'produto:detalhe' produto.id %}"><i
-                            class="fas fa-info-circle"></i></a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-info btn-sm me-1 mt-1" data-bs-toggle="modal"
+                        data-bs-target="#produto{{ produto.id }}"><i class="fas fa-info-circle"></i>
+                    </button>
                     <a class="btn btn-warning btn-sm me-1 mt-1" href=""><i class="fas fa-pen"></i></a>
                     <a class="btn btn-danger btn-sm mt-1" href=""><i class="fas fa-trash-alt"></i></a>
                 </th>
             </tr>
+            <!-- Modal -->
+            <div class="modal fade" id="produto{{ produto.id }}" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="produtoLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" name="campo" id="campo">{{ produto.nome }}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body align-middle pt-1">
+                            <div class="row">
+                                <div class="col col-auto">
+                                    <span class="">Código(s):</span> <br>
+                                    <span class="badge rounded-pill bg-secondary">{{ produto.codigo_01 }}</span>
+                                    {% if produto.codigo_02 != "-" %}
+                                    <span class="badge rounded-pill bg-success">{{ produto.codigo_02 }}</span>
+                                    {% endif %}
+                                    {% if produto.codigo_03 != "-" %}
+                                    <span class="badge rounded-pill bg-primary">{{ produto.codigo_03 }}</span>
+                                    {% endif %}<hr>
+                                </div>
+                                <div class="col">
+                                    <img class="rounded float-end" src="{{ produto.image.url }}" width="200px" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {% endfor %}
         </tbody>
     </table>
 </div>
 {% endblock %}
+
+<script>
+    function dadosProduto(valor) {
+        document.getElementById('campo').innerText = "valor"
+    }
+</script>
